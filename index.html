@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Will Thames" />
+  <meta name="dcterms.date" content="2017-11-09" />
+  <title>Ansible 2.4, 2.5, AWX</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <link rel="stylesheet" href="overrides.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Ansible 2.4, 2.5, AWX</h1>
+    <h2 class="author">Will Thames</h2>
+    <h3 class="date">09 November 2017</h3>
+</section>
+
+<section id="or-notes-from-ansiblefest-sf" class="slide level1">
+<h1>Or, Notes from AnsibleFest SF</h1>
+<ul>
+<li>Thanks to Ansible</li>
+<li>Thanks to XVT</li>
+</ul>
+</section>
+<section id="ansible-2.4" class="slide level1">
+<h1>Ansible 2.4</h1>
+<ul>
+<li>Released during AnsibleFest (early September)</li>
+<li>Python 3 core support</li>
+<li>YAML configuration</li>
+<li>Pluggable inventory (see resources later)</li>
+<li>Per-role vault passwords</li>
+<li>Better Azure support</li>
+<li>Massive Networking updates</li>
+<li>Powershell DSC support</li>
+</ul>
+</section>
+<section id="red-hat-ansible-engine" class="slide level1">
+<h1>Red Hat Ansible Engine</h1>
+<ul>
+<li>Red Hat now provide support for Ansible's core engine and 100 or so core modules.</li>
+</ul>
+</section>
+<section id="ansible-tower-3.2" class="slide level1">
+<h1>Ansible Tower 3.2</h1>
+<ul>
+<li>Prioritize and group Tower nodes</li>
+<li>Isolate Tower nodes (no outbound traffic)</li>
+<li>Fact cache, smart inventories</li>
+<li>SCM controlled inventories (thanks!)</li>
+</ul>
+</section>
+<section id="awx" class="slide level1">
+<h1>AWX</h1>
+<ul>
+<li>Upstream open source project for Ansible Tower</li>
+<li>Ansible Tower releases will be cut from AWX</li>
+<li>FAQ: What does it stand for?</li>
+</ul>
+</section>
+<section id="some-other-asides" class="slide level1">
+<h1>Some other asides</h1>
+<ul>
+<li>Working groups are really taking off
+<ul>
+<li>Windows (talk to Jordan)</li>
+<li>AWS (talk to me)</li>
+<li>VMWare</li>
+<li>Networks</li>
+</ul></li>
+<li>And many more - <a href="https://github.com/ansible/community" class="uri">https://github.com/ansible/community</a></li>
+</ul>
+</section>
+<section id="ansible-2.5" class="slide level1">
+<h1>Ansible 2.5</h1>
+<p>Still no published roadmap, not much of note in the changelog. From an AWS point of view:</p>
+<ul>
+<li>AWS dynamic inventory will be converted to plugins</li>
+<li>More support for AWS Serverless Application Model</li>
+<li>More boto3 modules</li>
+</ul>
+</section>
+<section id="notes-from-ansible-2.4-release" class="slide level1">
+<h1>Notes from Ansible 2.4 release</h1>
+<p>I introduced a lot of AWS bugs into Ansible 2.4, and then fixed a lot of those bugs for 2.4.1.</p>
+<p>To avoid this, all improvements to AWS modules marked as <code>stableinterface</code> require tests. This might slow down boto3 migration, but we should be able to spend less time fixing bugs and more time migrating!</p>
+</section>
+<section id="ansible-2.4-blog-posts" class="slide level1">
+<h1>Ansible 2.4 blog posts</h1>
+<p><a href="http://willthames.github.io/2017/07/17/so-you-want-to-test-aws-modules-for-ansible.html">Testing AWS Modules</a> <a href="http://willthames.github.io/2017/11/01/generating-inventory.html">Generating Inventory</a></p>
+</section>
+<section id="ansiblefest-talk-highlight" class="slide level1">
+<h1>AnsibleFest talk highlight</h1>
+<p><a href="https://www.ansible.com/infastructure-testing-with-molecule">Infrastructure Testing with Molecule</a></p>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: false,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: false,                // Display the page number of the current slide
+        theme: 'white', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>
